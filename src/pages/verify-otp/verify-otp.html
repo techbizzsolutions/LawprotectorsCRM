@@ -1,0 +1,24 @@
+<ion-header>
+
+    <ion-navbar color="header">
+        <ion-title>Lawprotector CRM</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+
+
+<ion-content padding>
+    <h5> OTP Verification </h5>
+    <ion-item>
+        <ion-input type="number" [(ngModel)]="otp" placeholder="Enter OTP"></ion-input>
+    </ion-item>
+    <p class="button_div" *ngIf="user">Edit number ? <span style="color: #f27613;" (click)="editnumber()">{{mobile}}</span></p>
+    <p class="button_div" *ngIf="user">Resend OTP ? <span style="color: #f27613;" (click)="resendOtp()">{{mobile}}</span></p>
+    <!-- Float the icon right -->
+    <div class="button_div">
+        <button ion-button (click)="verifyOtp()" block icon-right>
+          Verify OTP
+      <ion-icon name="md-arrow-round-forward"></ion-icon>
+    </button>
+    </div>
+</ion-content>

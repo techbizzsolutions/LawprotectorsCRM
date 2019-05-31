@@ -1,0 +1,29 @@
+<ion-header>
+
+  <ion-navbar color="header">
+      <ion-title>Lawprotector CRM</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <h5>Add RC Visit Status Information</h5>
+  <form [formGroup]="register" (ngSubmit)="logForm()">
+      <ion-item>
+          <ion-label floating>RC Visit Information</ion-label>
+          <ion-input type="text" formControlName="rcvisit"></ion-input>
+      </ion-item>
+      <div padding-horizontal>
+          <div class="alert" *ngIf="!register.controls['rcvisit'].valid && register.controls['rcvisit'].touched">Please Enter RC Visit Information</div>
+      </div>
+      
+      <!-- Float the icon right -->
+      <div class="button_div">
+          <button ion-button [disabled]="!register.valid" block icon-right>
+          Add
+    </button>
+      </div>
+  </form>
+
+</ion-content>

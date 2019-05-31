@@ -1,0 +1,44 @@
+<ion-header>
+
+  <ion-navbar color="header">
+      <ion-title>Lawprotector CRM</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <h5>Login</h5>
+  <ion-item>
+        <ion-label>Select Role</ion-label>
+        <ion-select interface="popover" [(ngModel)]="role">
+            <ion-option value="1">Admin</ion-option>
+            <ion-option value="2">Branch Head</ion-option>
+            <ion-option value="3">RC</ion-option>
+            <ion-option value="4">TC</ion-option>
+        </ion-select>
+    </ion-item>
+  <form [formGroup]="register" (ngSubmit)="logForm()">
+      <ion-item>
+          <ion-label floating>Mobile</ion-label>
+          <ion-input type="number" formControlName="Username"></ion-input>
+      </ion-item>
+      <div padding-horizontal>
+          <div class="alert" *ngIf="!register.controls['Username'].valid && register.controls['Username'].touched">Please Enter a User name</div>
+      </div>
+      <ion-item>
+          <ion-label floating>Password</ion-label>
+          <ion-input type="Password" formControlName="Password"></ion-input>
+      </ion-item>
+      <div padding-horizontal>
+          <div class="alert" *ngIf="!register.controls['Password'].valid && register.controls['Password'].touched">Please Enter Password</div>
+      </div>
+      <!-- Float the icon right -->
+      <div class="button_div">
+          <button ion-button [disabled]="!register.valid" block icon-right>
+          Login
+      <ion-icon name="log-in"></ion-icon>
+    </button>
+     <p (click)="forgot()"> Forgot Password ? Click here</p>
+      </div>
+  </form>
+</ion-content>

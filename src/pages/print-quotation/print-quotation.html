@@ -1,0 +1,114 @@
+<ion-header>
+
+  <ion-navbar color="header">
+      <ion-title>Lawprotector CRM</ion-title>
+      <ion-buttons end>
+          <button ion-button icon-only (click)="print()">
+              <ion-icon name="md-print"></ion-icon>
+          </button>
+      </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <div id="print" class="borderdivP" *ngIf="quotationData">
+      <table  style="width:100%">
+          <tr>
+              <td class="tablealign">
+                  <p class="removeMrginpadding" style="text-align: center"><strong>Performa Invoice</strong></p>
+              </td>
+            </tr>
+            </table>
+      <table  style="width:100%">
+          <tr>
+              <td class="tablealign">
+                  <p class="removeMrginpadding"><strong>Law ProtectorS IPR Consultant LLP.</strong></p>
+              </td>
+              <td class="tablealign">
+                  <p class="removeMrginpadding">Invoice No- {{quotationData.qno}}
+                  </p>
+              </td>
+          </tr>
+          <tr>
+            <td class="tablealign">
+                <p class="removeMrginpadding">Address: "Laxmi Niwas" Behind Kamla Nehru Hospital, Near Barne School, Mangalwar Peth, Pune-411011</p>
+            </td>
+            <td class="tablealign">
+                <p class="removeMrginpadding">Dated- {{quotationData.qdate}}
+                </p>
+            </td>
+        </tr>
+        <tr>
+          <td class="tablealign">
+              <p class="removeMrginpadding" style="text-align: center"><strong>Billing Details</strong></p>
+          </td>
+          <td class="tablealign">
+            <p class="removeMrginpadding"></p>
+        </td>
+      </tr>
+      <tr>
+        <td class="tablealign">
+            <p class="removeMrginpadding"><strong>{{quotationData.party_name}}</strong></p>
+        </td>
+        <td class="tablealign">
+          <p class="removeMrginpadding"></p>
+      </td>
+    </tr>
+    <tr>
+      <td class="tablealign">
+          <p class="removeMrginpadding"><strong>Address:</strong> {{quotationData.party_address}}</p>
+      </td>
+      <td class="tablealign">
+        <p class="removeMrginpadding"></p>
+    </td>
+  </tr>
+      </table>
+      <div style="overflow-x:auto;">
+          <table  style="width:100%">
+              <tr class="bckcolor">
+                  <th>Sr. no.</th>
+                  <th>Description</th>
+                  <th>Qty</th>
+                  <th>GST%</th>
+                  <th>Rate per Qty</th>
+                  <th>Amount</th>
+              </tr>
+              <tr *ngFor="let item of quotationData.productinfo; let i=index;">
+                  <td>{{i + 1}}</td>
+                  <td>{{item.services_name}}</td>
+                  <td>{{item.quantity}}</td>
+                  <td>{{item.gst}}</td>
+                  <td>{{item.rate}}</td>
+                  <td>{{item.amount}}</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>Total Amount</td>
+                <td>{{quotationData.tbasic_amount}}</td>
+            </tr>
+          </table>
+      </div>
+      <table  style="width:100%">
+        <tr>
+            <td class="tablealign">
+                <p class="removeMrginpadding">Account No.:- 917020070150451</p>
+                <p class="removeMrginpadding">IFSC Code:- UTIB0001168</p>
+                <p class="removeMrginpadding">Declaration:- We declare that the invoice shows the actual price of the goods described and that all particulars are true and correct.</p>
+            </td>
+            <td class="tablealign">
+                <p class="removeMrginpadding">For Authorised
+                </p>
+                <!-- <img width="140px;" src="assets/imgs/stamp.jpg" alt=""> -->
+                <img width="140px;" [src]="relativepath" alt="">
+                <p class="removeMrginpadding">Signatory
+                </p>
+            </td>
+        </tr>
+        </table>
+  </div>
+</ion-content>

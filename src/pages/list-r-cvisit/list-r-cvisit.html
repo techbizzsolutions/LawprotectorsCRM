@@ -1,0 +1,33 @@
+<ion-header>
+
+    <ion-navbar color="header">
+        <ion-title>Lawprotector CRM</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+
+
+<ion-content padding>
+    <h5>RC Visit Status Information List</h5>
+    <ion-list *ngIf="rc.length">
+        <ion-item-sliding #slidingItem *ngFor="let item of rc">
+            <ion-item >
+                {{item.rc_status_info}}
+            </ion-item>
+            <ion-item-options side="right">
+                <button ion-button color="primary" (click)="itemclick(item,slidingItem)">
+          <ion-icon name="create"></ion-icon>
+          Edit
+        </button>
+                <button ion-button color="danger" (click)="delete(item,slidingItem)">
+          <ion-icon name="trash"></ion-icon>
+          Delete
+        </button>
+            </ion-item-options>
+        </ion-item-sliding>
+
+    </ion-list>
+    <ion-card *ngIf="!rc.length">
+        <h6>No data found</h6>
+    </ion-card>
+</ion-content>

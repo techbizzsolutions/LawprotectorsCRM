@@ -1,0 +1,53 @@
+<ion-header>
+
+  <ion-navbar color="header">
+      <ion-title>Lawprotector CRM</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <h5>Set Target</h5>
+  <ion-item >
+    <ion-label>Select Time Period</ion-label>
+    <ion-select interface="popover"  [(ngModel)]="time" [compareWith]="compareFn">
+        <ion-option  *ngFor="let item of periods" [value]="item">{{item.title}}</ion-option>
+    </ion-select>
+</ion-item>
+  <ion-item >
+      <ion-label>Select Branch</ion-label>
+      <ion-select interface="popover"  [(ngModel)]="branch" (ionChange)="changeBranch($event)">
+          <ion-option  *ngFor="let item of branchs" [value]="item.id">{{item.branch_name}}</ion-option>
+      </ion-select>
+  </ion-item>
+  <ion-item>
+          <ion-label>Select Role</ion-label>
+          <ion-select interface="popover" [(ngModel)]="role"  (ionChange)="changeRole($event)">
+                <ion-option  *ngFor="let item of roles" [value]="item.id">{{item.name}}</ion-option>
+          </ion-select>
+  </ion-item>
+
+  <ion-item>
+      <ion-label>Select Employee</ion-label>
+      <ion-select interface="popover"  [(ngModel)]="emp">
+          <ion-option  *ngFor="let item of emps" [value]="item.id">{{item.first_name}} {{item.last_name}}</ion-option>
+      </ion-select>
+  </ion-item>
+  <form [formGroup]="register" (ngSubmit)="logForm()">
+    <ion-item>
+        <ion-label floating>Target Amount</ion-label>
+        <ion-input type="number" formControlName="amount"></ion-input>
+    </ion-item>
+    <div padding-horizontal>
+        <div class="alert" *ngIf="!register.controls['amount'].valid && register.controls['amount'].touched">Please Enter target</div>
+    </div>
+    
+    <!-- Float the icon right -->
+    <div class="button_div">
+        <button ion-button [disabled]="!register.valid" block icon-right>
+        Add
+  </button>
+    </div>
+</form>
+</ion-content>

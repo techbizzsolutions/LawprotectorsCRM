@@ -1,0 +1,55 @@
+<ion-header>
+
+  <ion-navbar color="header">
+      <ion-title>Lawprotector CRM</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <h5>Call Information List</h5>
+  <!-- <ion-row>
+    <ion-col col-6>
+        <ion-item (click)="opencal('From')">
+            <ion-label class="marginlbl">{{ From }}</ion-label>
+        </ion-item>
+    </ion-col>
+    <ion-col col-6>
+        <ion-item (click)="opencal('To')">
+            <ion-label class="marginlbl">{{ To }}</ion-label>
+        </ion-item>
+    </ion-col>
+</ion-row>
+<div class="button_div">
+  <button ion-button  block (click)="getBranch()">
+  View
+</button>
+</div> -->
+  <ion-list *ngIf="lists.length">
+      <ion-item-sliding #slidingItem *ngFor="let item of lists">
+          <ion-item >
+            <p>
+                Name: {{item.party_name}}
+            </p>
+            <p>
+              Mobile: {{item.phone}}
+            </p>
+          </ion-item>
+          <ion-item-options side="right">
+              <button ion-button color="primary" (click)="itemclick(item,slidingItem)">
+        <ion-icon name="create"></ion-icon>
+        Edit
+      </button>
+              <button ion-button color="danger" (click)="delete(item,slidingItem)">
+        <ion-icon name="trash"></ion-icon>
+        Delete
+      </button>
+          </ion-item-options>
+      </ion-item-sliding>
+
+  </ion-list>
+  <ion-card *ngIf="!lists.length">
+      <h6>No data found</h6>
+  </ion-card>
+</ion-content>

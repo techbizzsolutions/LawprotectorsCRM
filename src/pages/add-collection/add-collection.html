@@ -1,0 +1,51 @@
+<ion-header>
+
+    <ion-navbar color="header">
+        <ion-title>Lawprotector CRM</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  
+  <ion-content padding>
+    <h5>Add Daily Collection</h5>
+    <ion-item>
+        <ion-label>Select Branch</ion-label>
+        <ion-select interface="popover"  [(ngModel)]="branch">
+            <ion-option  *ngFor="let item of branchs" [value]="item.id">{{item.branch_name}}</ion-option>
+        </ion-select>
+    </ion-item>
+    <ion-item (click)="opencal()">
+        <ion-label class="marginlbl">{{ orderdate }}</ion-label>
+      </ion-item>
+    <form [formGroup]="register" (ngSubmit)="logForm()">
+        <ion-row>
+          <ion-col col-6>
+            <ion-item>
+              <ion-label floating>Govt. Fees</ion-label>
+              <ion-input type="number" formControlName="fees"></ion-input>
+          </ion-item>
+          <div padding-horizontal>
+              <div class="alert" *ngIf="!register.controls['fees'].valid && register.controls['fees'].touched">Please Enter Govt. Fees</div>
+          </div>
+          </ion-col>
+          <ion-col col-6>
+            <ion-item>
+              <ion-label floating>LP Fees</ion-label>
+              <ion-input type="number" formControlName="rate"></ion-input>
+          </ion-item>
+          <div padding-horizontal>
+              <div class="alert" *ngIf="!register.controls['rate'].valid && register.controls['rate'].touched">Please Enter Standard Rate</div>
+          </div>
+          </ion-col>
+        </ion-row>
+        <!-- Float the icon right -->
+        <div class="button_div">
+            <button ion-button [disabled]="!register.valid" block icon-right>
+            Add
+      </button>
+        </div>
+    </form>
+  
+  </ion-content>
+  

@@ -1,0 +1,42 @@
+<ion-header>
+
+    <ion-navbar color="header">
+        <ion-title>Lawprotector CRM</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <h5>Quotation List</h5>
+    <ion-list *ngIf="quotations.length">
+        <ion-item-sliding #slidingItem *ngFor="let item of quotations">
+            <ion-item>
+                <p>
+                    Name: {{item.party_name}} Mobile: {{item.party_mobile_no}}
+                </p>
+                <p>
+                    Total Amount: {{item.tbasic_amount}}
+                </p>
+            </ion-item>
+            <ion-item-options side="right">
+                <button ion-button color="primary" (click)="itemclick(item,slidingItem)">
+                    <ion-icon name="create"></ion-icon>
+                    Edit
+                </button>
+                <button ion-button color="header" (click)="print(item,slidingItem)">
+                    <ion-icon name="md-print"></ion-icon>
+                    Print
+                </button>
+                <button ion-button color="danger" (click)="delete(item,slidingItem)">
+                    <ion-icon name="trash"></ion-icon>
+                    Delete
+                </button>
+            </ion-item-options>
+        </ion-item-sliding>
+
+    </ion-list>
+    <ion-card *ngIf="!quotations.length">
+        <h6>No data found</h6>
+    </ion-card>
+</ion-content>

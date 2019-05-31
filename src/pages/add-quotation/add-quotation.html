@@ -1,0 +1,91 @@
+<ion-header>
+
+    <ion-navbar color="header">
+        <ion-title>Lawprotector CRM</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <h5>Add Quotation</h5>
+    <form [formGroup]="register" (ngSubmit)="logForm()">
+        <ion-item (click)="opencal()">
+            <ion-label class="marginlbl">{{ orderdate }}</ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Quotation No.</ion-label>
+            <ion-input type="text" formControlName="qnumber"></ion-input>
+        </ion-item>
+        <div padding-horizontal>
+            <div class="alert" *ngIf="!register.controls['qnumber'].valid && register.controls['qnumber'].touched">
+                Please Enter Quotation No.</div>
+        </div>
+        <ion-item>
+            <ion-label floating>Party Name</ion-label>
+            <ion-input type="text" formControlName="party"></ion-input>
+        </ion-item>
+        <div padding-horizontal>
+            <div class="alert" *ngIf="!register.controls['party'].valid && register.controls['party'].touched">Please
+                Enter Party</div>
+        </div>
+        <ion-item>
+            <ion-label floating>Address</ion-label>
+            <ion-input type="text" formControlName="address"></ion-input>
+        </ion-item>
+        <div padding-horizontal>
+            <div class="alert" *ngIf="!register.controls['address'].valid && register.controls['address'].touched">
+                Please Enter Address</div>
+        </div>
+        <ion-item>
+            <ion-label floating>Mobile</ion-label>
+            <ion-input type="number" formControlName="mobile"></ion-input>
+        </ion-item>
+        <div padding-horizontal>
+            <div class="alert" *ngIf="!register.controls['mobile'].valid && register.controls['mobile'].touched">Please
+                Enter Mobile</div>
+        </div>
+        <ion-list style="margin-top: 5px !important;">
+            <ion-item-divider color="light" class="dividerpadding">
+                Item Details
+            </ion-item-divider>
+            <ion-item>
+                <ion-row *ngFor="let item of items">
+                    <ion-col col-12>
+                        <p class="subtitle">
+                            <ion-icon color="primary" name="md-create" (click)="itemclick(item)"></ion-icon>
+                            <span class="subvalue">
+                                <ion-icon color="danger" (click)="delete(item)" name="trash"></ion-icon>
+                            </span>
+                        </p>
+                        <p class="subtitle">Product/Service: <span class="subvalue">{{item.services_name}}</span></p>
+                        <p class="subtitle">Quantity: <span class="subvalue">{{item.quantity}}</span></p>
+                        <p class="subtitle">Rate: <span class="subvalue">{{item.rate}}</span></p>
+                        <p class="subtitle">GST% : <span class="subvalue">{{item.gst}}</span></p>
+                        <p class="subtitle">Amount: <span class="subvalue">{{item.amount}}</span></p>
+                    </ion-col>
+                </ion-row>
+                <hr>
+                <ion-row>
+                    <ion-col col-12>
+                        <p> Total Amount: <span class="subvalue">{{totalItemamount}}</span></p>
+                    </ion-col>
+                </ion-row>
+                <p class="title" (click)="itemclick()">
+                    <ion-icon color="primary" name="md-add-circle"></ion-icon> Add Item
+                </p>
+
+            </ion-item>
+        </ion-list>
+        <ion-item>
+                <ion-textarea placeholder="Note" rows="4" formControlName="note"></ion-textarea>
+            </ion-item>
+        <!-- Float the icon right -->
+        <div class="button_div">
+            <button ion-button [disabled]="!register.valid" block icon-right>
+                Add
+            </button>
+        </div>
+    </form>
+
+</ion-content>

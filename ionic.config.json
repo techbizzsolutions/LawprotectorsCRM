@@ -1,0 +1,7 @@
+{
+  "name": "wTel",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

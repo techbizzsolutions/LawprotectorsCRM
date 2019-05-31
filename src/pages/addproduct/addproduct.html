@@ -1,0 +1,54 @@
+<ion-header>
+
+    <ion-navbar color="header">
+        <ion-title>Lawprotector CRM</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  <ion-content padding>
+    <h5>Add Product</h5>
+    <ion-item>
+        <ion-label>Select Product</ion-label>
+        <ion-select interface="popover"  [(ngModel)]="product" [compareWith]="compareFncom">
+            <ion-option  *ngFor="let product of products" [value]="product">{{product.services_name}}</ion-option>
+        </ion-select>
+    </ion-item>
+    <form [formGroup]="register">
+        <ion-item>
+            <ion-label floating>Quantity</ion-label>
+            <ion-input type="number" formControlName="quantity"></ion-input>
+        </ion-item>
+        <div padding-horizontal>
+            <div class="alert" *ngIf="!register.controls['quantity'].valid && register.controls['quantity'].touched">Please Enter Quantity</div>
+        </div>
+        <ion-item>
+            <ion-label floating>Rate</ion-label>
+            <ion-input type="number" formControlName="rate"></ion-input>
+        </ion-item>
+        <div padding-horizontal>
+            <div class="alert" *ngIf="!register.controls['rate'].valid && register.controls['rate'].touched">Please Enter Rate</div>
+        </div>
+              <ion-item>
+                <ion-label floating>GST%</ion-label>
+                <ion-input type="number" formControlName="gst"></ion-input>
+            </ion-item>
+            <div padding-horizontal>
+                <div class="alert" *ngIf="!register.controls['gst'].valid && register.controls['gst'].touched">Please Enter GST%</div>
+            </div>
+            <ion-label> Amount: {{amount}}</ion-label>
+            <div class="button_div">
+                <button ion-button small (click)="cal()" [disabled]="!register.valid">
+                         Calculate Amount
+                </button>
+            </div>
+        <!-- Float the icon right -->
+        <div class="button_div">
+            <button ion-button [disabled]="!register.valid" block (click)="logForm()">
+            Add
+      </button>
+        </div>
+    </form>
+  
+  </ion-content>
+  

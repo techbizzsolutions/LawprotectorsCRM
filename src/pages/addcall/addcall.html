@@ -1,0 +1,29 @@
+<ion-header>
+
+  <ion-navbar color="header">
+      <ion-title>Lawprotector CRM</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <h5>Add Call Status Information</h5>
+  <form [formGroup]="register" (ngSubmit)="logForm()">
+      <ion-item>
+          <ion-label floating>Call Visit Information</ion-label>
+          <ion-input type="text" formControlName="callvisit"></ion-input>
+      </ion-item>
+      <div padding-horizontal>
+          <div class="alert" *ngIf="!register.controls['callvisit'].valid && register.controls['callvisit'].touched">Please Enter Call Visit Information</div>
+      </div>
+      
+      <!-- Float the icon right -->
+      <div class="button_div">
+          <button ion-button [disabled]="!register.valid" block icon-right>
+          Add
+    </button>
+      </div>
+  </form>
+
+</ion-content>

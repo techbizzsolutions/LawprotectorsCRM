@@ -1,0 +1,81 @@
+<ion-header>
+
+    <ion-navbar color="header">
+        <ion-title>Lawprotector CRM</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  <ion-content padding>
+    <h5>Call Information</h5>
+    <form [formGroup]="register" (ngSubmit)="logForm()">
+        <ion-item>
+            <ion-label floating>Party Name</ion-label>
+            <ion-input type="text" formControlName="party_name"></ion-input>
+        </ion-item>
+        <div padding-horizontal>
+            <div class="alert" *ngIf="!register.controls['party_name'].valid && register.controls['party_name'].touched">Please Enter Party Name</div>
+        </div>
+        <ion-item>
+          <ion-label floating>Mobile</ion-label>
+          <ion-input type="number" formControlName="mobile"></ion-input>
+      </ion-item>
+      <div padding-horizontal>
+          <div class="alert" *ngIf="!register.controls['mobile'].valid && register.controls['mobile'].touched">Please Enter mobile</div>
+      </div>
+      <ion-item>
+        <ion-label floating>Email</ion-label>
+        <ion-input type="email" formControlName="email"></ion-input>
+    </ion-item>
+    <div padding-horizontal>
+        <div class="alert" *ngIf="!register.controls['email'].valid && register.controls['email'].touched">Please Enter Email</div>
+    </div>
+    <ion-item>
+      <ion-label floating>City Name</ion-label>
+      <ion-input type="text" formControlName="cityname"></ion-input>
+  </ion-item>
+  <div padding-horizontal>
+      <div class="alert" *ngIf="!register.controls['cityname'].valid && register.controls['cityname'].touched">Please Enter City Name</div>
+  </div>
+    <ion-item >
+      <ion-label>Select Call Status</ion-label>
+      <ion-select interface="popover"  [(ngModel)]="selectcall" [ngModelOptions]="{standalone: true}">
+          <ion-option  *ngFor="let item of calls" [value]="item.id">{{item.call_status_info}}</ion-option>
+      </ion-select>
+  </ion-item>
+  <ion-item >
+    <ion-label>Interested for Service/Product</ion-label>
+    <ion-select interface="popover"  [(ngModel)]="service" [ngModelOptions]="{standalone: true}">
+        <ion-option  *ngFor="let item of services" [value]="item.id">{{item.services_name}}</ion-option>
+    </ion-select>
+  </ion-item>
+  <ion-row>
+      <ion-col col-6>
+          <ion-item (click)="date()">
+              <ion-label class="marginlbl">{{ appdate }}</ion-label>
+          </ion-item>
+      </ion-col>
+      <ion-col col-6>
+          <ion-item (click)="time()">
+              <ion-label class="marginlbl">{{ apptime }}</ion-label>
+          </ion-item>
+      </ion-col>
+  </ion-row>
+  <ion-item >
+      <ion-label>Lead assigned to RC Name</ion-label>
+      <ion-select interface="popover"  [(ngModel)]="selectrc" [ngModelOptions]="{standalone: true}">
+          <ion-option  *ngFor="let item of rc" [value]="item.id">{{item.first_name}} {{item.last_name}}</ion-option>
+      </ion-select>
+  </ion-item>
+    <ion-item>
+      <ion-textarea placeholder="Note" rows="4" formControlName="note"></ion-textarea>
+  </ion-item>
+        <!-- Float the icon right -->
+        <div class="button_div">
+            <button ion-button [disabled]="!register.valid" block icon-right>
+            Add
+      </button>
+        </div>
+    </form>
+  </ion-content>
+  

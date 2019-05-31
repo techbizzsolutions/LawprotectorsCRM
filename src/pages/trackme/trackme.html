@@ -1,0 +1,47 @@
+<ion-header>
+
+    <ion-navbar color="header">
+        <ion-title>Lawprotector CRM</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+
+
+<ion-content padding>
+    <h5>Track Me</h5>
+    <ion-item >
+        <ion-label>Select Branch</ion-label>
+        <ion-select interface="popover"  [(ngModel)]="branch" (ionChange)="changeBranch($event)">
+            <ion-option  *ngFor="let item of branchs" [value]="item.id">{{item.branch_name}}</ion-option>
+        </ion-select>
+    </ion-item>
+    <ion-item>
+            <ion-label>Select Role</ion-label>
+            <ion-select interface="popover" [(ngModel)]="role"  (ionChange)="changeRole($event)">
+                  <ion-option  *ngFor="let item of roles" [value]="item.id">{{item.name}}</ion-option>
+            </ion-select>
+    </ion-item>
+
+    <ion-item>
+        <ion-label>Select Employee</ion-label>
+        <ion-select interface="popover"  [(ngModel)]="emp">
+                <ion-option value="*">All</ion-option>
+            <ion-option  *ngFor="let item of emps" [value]="item.id">{{item.first_name}} {{item.last_name}}</ion-option>
+        </ion-select>
+    </ion-item>
+    <div class="button_div">
+        <button ion-button  block (click)="view()">
+        Track Me
+  </button>
+    </div>
+    <ion-list *ngIf="users.length">
+            <ion-item *ngFor="let item of users">
+                    <p>{{item.first_name}} {{item.last_name}}</p>
+                    <p>Mobile {{item.phone}}</p>
+                    <p>Current City: {{item.currentcity}}</p>
+            </ion-item>
+    </ion-list>
+    <ion-card *ngIf="!users.length">
+        <h6>No data found</h6>
+    </ion-card>
+</ion-content>

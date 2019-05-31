@@ -1,0 +1,52 @@
+<ion-header>
+
+    <ion-navbar color="header">
+        <ion-title>Lawprotector CRM</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  
+  <ion-content padding>
+      <ion-row>
+          <ion-col col-6>
+              <ion-item (click)="opencal('From')">
+                  <ion-label class="marginlbl">{{ From }}</ion-label>
+              </ion-item>
+          </ion-col>
+          <ion-col col-6>
+              <ion-item (click)="opencal('To')">
+                  <ion-label class="marginlbl">{{ To }}</ion-label>
+              </ion-item>
+          </ion-col>
+      </ion-row>
+    <ion-item>
+        <ion-label>Select Branch</ion-label>
+        <ion-select interface="popover"  [(ngModel)]="branch">
+            <ion-option  *ngFor="let item of branchs" [value]="item.id">{{item.branch_name}}</ion-option>
+        </ion-select>
+    </ion-item>
+    <div class="button_div">
+        <button ion-button  block (click)="view()">
+        View
+  </button>
+    </div>
+    <table style="width:100%" *ngIf="lists.length">
+        <tr class="bckcolor">
+            <th>Employee Name</th>
+            <th>Target Amount</th>
+            <th>Govt Fee</th>
+            <th>LP Fee</th>
+        </tr>
+        <tr *ngFor="let item of lists;">
+            <td class="border">{{item.empname}}</td>
+            <td class="border">{{item.totaltarget}}</td>
+            <td class="border">{{item.collection.totalgovtfee}}</td>
+            <td class="border">{{item.collection.totallpfee}}</td>
+        </tr>
+    </table>
+    <ion-card *ngIf="!lists.length">
+        <h6>No data found</h6>
+    </ion-card>
+  </ion-content>
+  

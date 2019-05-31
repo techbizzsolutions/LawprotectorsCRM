@@ -1,0 +1,48 @@
+<ion-header>
+
+  <ion-navbar color="header">
+      <ion-title>Lawprotector CRM</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <h5>Add Product/Services Information</h5>
+  <form [formGroup]="register" (ngSubmit)="logForm()">
+      <ion-item>
+          <ion-label floating>Product/Service</ion-label>
+          <ion-input type="text" formControlName="service"></ion-input>
+      </ion-item>
+      <div padding-horizontal>
+          <div class="alert" *ngIf="!register.controls['service'].valid && register.controls['service'].touched">Please Enter Product/Service</div>
+      </div>
+      <ion-row>
+        <ion-col col-6>
+          <ion-item>
+            <ion-label floating>Govt. Fees</ion-label>
+            <ion-input type="number" formControlName="fees"></ion-input>
+        </ion-item>
+        <div padding-horizontal>
+            <div class="alert" *ngIf="!register.controls['fees'].valid && register.controls['fees'].touched">Please Enter Govt. Fees</div>
+        </div>
+        </ion-col>
+        <ion-col col-6>
+          <ion-item>
+            <ion-label floating>Standard Rate</ion-label>
+            <ion-input type="number" formControlName="rate"></ion-input>
+        </ion-item>
+        <div padding-horizontal>
+            <div class="alert" *ngIf="!register.controls['rate'].valid && register.controls['rate'].touched">Please Enter Standard Rate</div>
+        </div>
+        </ion-col>
+      </ion-row>
+      <!-- Float the icon right -->
+      <div class="button_div">
+          <button ion-button [disabled]="!register.valid" block icon-right>
+          Add
+    </button>
+      </div>
+  </form>
+
+</ion-content>

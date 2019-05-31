@@ -1,0 +1,59 @@
+.alert {
+    color: red;
+    margin-top: 10px;
+}
+
+.button_div {
+    margin-top: 25px;
+    text-align: center;
+}
+
+.aligncenter {
+    text-align: center !important;
+}
+
+h5 {
+    margin-top: 5px !important;
+    margin-bottom: 10px!important;
+    text-align: center!important;
+    color: color($colors, primary) !important;
+}
+
+.item-md {
+    padding-left: 1px!important;
+}
+
+.marginlbl {
+    margin: 13px 0px 13px 0 !important;
+}
+
+.text-input-md {
+    margin: 13px 1px !important;
+}
+
+.dividerpadding {
+    padding-left: 15px !important;
+}
+
+.item-md.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner,
+.item-md.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
+    border-bottom-color: color($colors, secondary) !important;
+    -webkit-box-shadow: inset 0 -1px 0 0 color($colors, secondary) !important;
+    box-shadow: inset 0 -1px 0 0 color($colors, secondary) !important
+}
+
+.iconmargin {
+    margin-left: 10px;
+    margin-right: 5px;
+}
+
+.select-popover ion-list {
+    margin: -1px 1px 1px 10px !important;
+}
+.label-md {
+     margin: 0px 8px 0px 0 !important;
+}
+
+ion-card {
+    padding: 5px !important;
+}
